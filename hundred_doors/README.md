@@ -10,4 +10,14 @@ The second time, only visit every 2nd door   (door #2, #4, #6, ...),   and toggl
 
 The third time, visit every 3rd door   (door #3, #6, #9, ...), etc,   until you only visit the 100th door.
 
+&nbsp;
+
+## Task
+
+Answer the question:   what state are the doors in after the last pass?   Which are open, which are closed?
+
+&nbsp;
+
+## Solution
+
 At the end every Door with a perfect squared number should be open the rest should be closed.
