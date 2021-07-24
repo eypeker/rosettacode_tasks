@@ -1,10 +1,9 @@
 use super::model;
-
-pub fn create_field(){
-    let tg = model::init();
-}
+use super::model::field;
 
 
-pub fn grid_click(cell: model::point::Point){
-    
+
+
+pub fn grid_click(cell: model::point::Point) -> bool{
+    true
 }

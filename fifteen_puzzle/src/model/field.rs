@@ -1,10 +1,10 @@
 
-pub enum Tile {
+enum Tile {
         Num(u32),
         Emp,
     }
 
-pub use Tile::{Num,Emp};
+use Tile::{Num,Emp};
 
 use super::point::Point;
 
@@ -26,7 +26,7 @@ impl Tilegrid{
         }
     }
 
-    pub fn moveTile(&mut self, pos:Point) -> Result<Point,Point>{
+    pub fn move_tile(&mut self, pos:Point) -> Result<Point,Point>{
         if pos.is_valid() && pos.is_neighbour(&self.empty){
             self.field[self.empty.x()][self.empty.y()] = match self.field[pos.x()][ pos.y()]{
                 Num(k) => Num(k),
@@ -41,17 +41,20 @@ impl Tilegrid{
     }
 
     pub fn get_field(&self) -> [[Option<u32>;4];4]{
-        //self.field.iter().map(|r| r.iter().map(|c| match c {Num(n)=>*n, Emp => 0}).collect()).collect();
         let mut arrvec : [[Option<u32>;4];4]= [[None;4];4];
         for (i, row) in self.field.iter().enumerate(){
             for (j, cell) in row.iter().enumerate(){
                 arrvec[i][j] = match *cell { 
                     Num(k) => Some(k),
                     Emp => None
-                    }
+                }
             }
         }
         arrvec
+    }
+
+    pub fn get_empty(&self) -> Point{
+        self.empty
     }
 
     
