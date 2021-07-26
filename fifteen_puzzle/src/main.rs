@@ -1,6 +1,6 @@
 mod model;
-
+mod controller;
 
 fn main() {
-    println!("Hello, world!");
+    let field = model::create_field();
 }
