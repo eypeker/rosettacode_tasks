@@ -22,7 +22,7 @@ impl Tilegrid{
             
         Tilegrid{
             field:f,
-            empty:Point::new(3,3).unwrap(),
+            empty:Point::new(3,3),
         }
     }
 
@@ -30,7 +30,7 @@ impl Tilegrid{
         if pos.is_valid() && pos.is_neighbour(&self.empty){
             self.field[self.empty.x()][self.empty.y()] = match self.field[pos.x()][ pos.y()]{
                 Num(k) => Num(k),
-                _ => Num(0),
+                _ => Emp,
             };
             self.field[pos.x()][pos.y()] = Tile::Emp;
             self.empty = pos;

@@ -7,10 +7,15 @@ pub struct Point{
 
 
 impl Point {
-    pub fn new(x:u8, y:u8) -> Result<Point,String>{
+    pub fn new(x:u8, y:u8) -> Point{
         match Point::are_valid(x,y){
-            true=>Ok(Point{x,y}),
-            false=>Ok(Point{x:3,y:3}),
+            true => Point{x,y},
+            false => {
+                match x < 4 {
+                    true => Point{x,y:0},
+                    false => Point{x:3,y}
+                }
+            },
         }
     }
 
@@ -45,4 +50,24 @@ impl Point {
         usize::from(self.y)
     }
 
+    pub fn move_pos(&self, direction:u32) -> Point{
+        match direction {
+            0 => match self.x {3 => *self, _ => Point::new(self.x + 1, self.y)}, //moveright
+            1 => match self.x {0 => *self, _ => Point::new(self.x - 1, self.y)}, //moveleft
+            2 => match self.y {3 => *self, _ => Point::new(self.x, self.y + 1)}, //movedown
+            3 => match self.y {0 => *self, _ => Point::new(self.x, self.y - 1)},  //moveup
+            _ => *self
+        }
+    }
+
+}
+
+impl PartialEq for Point{
+    fn eq(&self, other:&Point) -> bool{
+        self.x == other.x && self.y == other.y
+    }
+
+    fn ne(&self, other: &Self) -> bool {
+        !self.eq(other)
+    }
 }
