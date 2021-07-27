@@ -66,7 +66,7 @@ impl PartialEq for Point{
     fn eq(&self, other:&Point) -> bool{
         self.x == other.x && self.y == other.y
     }
-
+    
     fn ne(&self, other: &Self) -> bool {
         !self.eq(other)
     }

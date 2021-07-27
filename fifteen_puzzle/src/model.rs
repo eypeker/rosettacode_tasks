@@ -4,7 +4,7 @@ use self::field::Tilegrid;
 pub mod field;
 pub mod point;
 
-pub fn init() -> field::Tilegrid{
+fn init() -> field::Tilegrid{
     Tilegrid::new()
 }
 
@@ -19,7 +19,7 @@ fn mix(mut tg: field::Tilegrid) -> field::Tilegrid{
         if e != newpoint {
             match tg.move_tile(newpoint) {
                 Err(_) => println!("something went wrong with moving the tiles while mixing"),
-                _ => (),
+                _ => ()
             };
         }
     }
