@@ -11,7 +11,7 @@ fn init() -> field::Tilegrid{
 use rand::Rng;
 fn mix(mut tg: field::Tilegrid) -> field::Tilegrid{
     let mut rng =rand::thread_rng();
-    let iterations = rng.gen_range(20..100);
+    let iterations = rng.gen_range(50..200);
     for _ in 0..iterations{
         let e = tg.get_empty();
         let dir = rng.gen_range(0..4); 

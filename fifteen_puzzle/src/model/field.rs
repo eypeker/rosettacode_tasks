@@ -1,4 +1,5 @@
-
+use druid::{Data, Lens};
+#[derive(Clone,Data)]
 enum Tile {
         Num(u32),
         Emp,
@@ -7,7 +8,7 @@ enum Tile {
 use Tile::{Num,Emp};
 
 use super::point::Point;
-
+#[derive(Clone, Data, Lens)]
 pub struct Tilegrid{
     field:[[Tile;4];4],
     empty: Point,
@@ -40,13 +41,13 @@ impl Tilegrid{
         }
     }
 
-    pub fn get_field(&self) -> [[Option<u32>;4];4]{
-        let mut arrvec : [[Option<u32>;4];4]= [[None;4];4];
+    pub fn get_field(&self) -> [[u32;4];4]{
+        let mut arrvec : [[u32;4];4]= [[0;4];4];
         for (i, row) in self.field.iter().enumerate(){
             for (j, cell) in row.iter().enumerate(){
                 arrvec[i][j] = match *cell { 
-                    Num(k) => Some(k),
-                    Emp => None
+                    Num(k) => k,
+                    Emp => 0
                 }
             }
         }
@@ -55,8 +56,14 @@ impl Tilegrid{
 
     pub fn get_empty(&self) -> Point{
         self.empty
-    }
+    } 
+}
 
-    
-    
+
+impl ToString for Tilegrid{
+    fn to_string(&self) -> std::string::String{
+        let vs = self.get_field();
+        format!("{0} {1} {2} {3} \n{4} {5} {6} {7} \n{8} {9} {10} {11} \n{12} {13} {14} {15} \n",
+        vs[0][0], vs[0][1], vs[0][2], vs[0][3], vs[1][0], vs[1][1], vs[1][2], vs[1][3], vs[2][0], vs[2][1], vs[2][2], vs[2][3], vs[3][0], vs[3][1], vs[3][2], vs[3][3])
+    }
 }

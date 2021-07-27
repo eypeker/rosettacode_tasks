@@ -1,4 +1,5 @@
-#[derive(Copy, Clone)]
+use druid::Data;
+#[derive(Copy, Clone, Data)]
 pub struct Point{
     x:u8,
     y:u8
@@ -12,7 +13,7 @@ impl Point {
             true => Point{x,y},
             false => {
                 match x < 4 {
-                    true => Point{x,y:0},
+                    true => Point{x,y:3},
                     false => Point{x:3,y}
                 }
             },
@@ -31,9 +32,9 @@ impl Point {
     }
 
     pub fn is_neighbour(&self, point: &Point)-> bool {
-        self.x == point.x && (self.y  +1 == point.y || self.y - 1 ==point.y) 
+        self.x == point.x && (self.y  + 1 == point.y || self.y - 1 ==point.y) 
         || 
-        (self.y == point.y && (self.x + 1 == point.x || self.x - 1 ==point.x))
+        (self.y == point.y && (self.x + 1 == point.x || self.x - 1 == point.x))
     }
 
 
