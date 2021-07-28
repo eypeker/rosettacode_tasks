@@ -27,7 +27,8 @@ impl Tilegrid{
         }
     }
 
-    pub fn move_tile(&mut self, pos:Point) -> Result<Point,Point>{
+    /*pub fn move_tile(&mut self, pos:(u8,u8)){
+        let pos = Point::new(pos.0,pos.1);
         if pos.is_valid() && pos.is_neighbour(&self.empty){
             self.field[self.empty.x()][self.empty.y()] = match self.field[pos.x()][ pos.y()]{
                 Num(k) => Num(k),
@@ -35,9 +36,17 @@ impl Tilegrid{
             };
             self.field[pos.x()][pos.y()] = Tile::Emp;
             self.empty = pos;
-            Ok(self.empty)
-        }else{
-            Err(self.empty)
+        }
+    }*/
+
+    pub fn move_tile(&mut self, pos:Point){
+        if pos.is_valid() && pos.is_neighbour(&self.empty){
+            self.field[self.empty.x()][self.empty.y()] = match self.field[pos.x()][ pos.y()]{
+                Num(k) => Num(k),
+                _ => Emp,
+            };
+            self.field[pos.x()][pos.y()] = Tile::Emp;
+            self.empty = pos;
         }
     }
 
