@@ -17,10 +17,7 @@ fn mix(mut tg: field::Tilegrid) -> field::Tilegrid{
         let dir = rng.gen_range(0..4); 
         let newpoint = e.move_pos(dir);
         if e != newpoint {
-            match tg.move_tile(newpoint) {
-                Err(_) => println!("something went wrong with moving the tiles while mixing"),
-                _ => ()
-            };
+            tg.move_tile(newpoint) ;
         }
     }
     tg
