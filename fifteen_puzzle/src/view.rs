@@ -16,17 +16,20 @@ fn _build_ui() -> impl Widget<()> {
             1.0))
 }
 
-fn get_str(val:Option<u32>)->String{
+fn get_str(val:u32)->String{
     match val {
-        Some(k) => k.to_string(),
-        None => "".to_string()
+        0 => " ".to_owned(),
+        k => k.to_string(),
     }
 }
 
 
 fn get_label(x:usize, y:usize)-> impl Widget<Tg>{
 
-    return Label::new(move |data:&Tg, _env:&_| data.get_field()[x.clone()][y.clone()].to_string())
+    return Label::new(move |data:&Tg, _env:&_| get_str(data.get_field()[x.clone()][y.clone()]))
+        .fix_height(100.0).fix_width(100.0)
+        .align_horizontal(druid::UnitPoint::CENTER)
+        .border(druid::Color::grey8(255),2.0 )
         .on_click(move|_ctx, data:&mut Tg,_env| data.move_tile(Point::new(x as u8,y as u8)))
 }
 
