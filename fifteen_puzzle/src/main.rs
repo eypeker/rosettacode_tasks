@@ -76,6 +76,7 @@ fn main() -> Result<(), PlatformError>{
     let field = model::create_field();
     println!("{}", field.to_string());
     AppLauncher::with_window(WindowDesc::new(||{build_ui()})).use_simple_logger().launch(field)?;
+    println("{}",25);
 
     Ok(())
 }
