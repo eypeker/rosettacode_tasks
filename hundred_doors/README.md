@@ -1,5 +1,7 @@
 # Hundred Doors 
 
+The Proginal Task is to be found at [Rosettacode](http://rosettacode.org/wiki/100_doors)
+
 There are 100 doors in a row that are all initially closed.
 
 You make 100 passes by the doors.

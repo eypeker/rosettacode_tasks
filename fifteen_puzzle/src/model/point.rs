@@ -32,9 +32,13 @@ impl Point {
     }
 
     pub fn is_neighbour(&self, point: &Point)-> bool {
-        self.x == point.x && (self.y  + 1 == point.y || self.y - 1 ==point.y) 
+        (self.x == point.x 
+            && (self.y  + 1 == point.y 
+                || ( self.y > 0 && self.y - 1 == point.y) ))
         || 
-        (self.y == point.y && (self.x + 1 == point.x || self.x - 1 == point.x))
+        (self.y == point.y 
+            && (self.x + 1 == point.x 
+                || (self.x > 0 && self.x - 1 == point.x) ))
     }
 
 
