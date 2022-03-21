@@ -1,6 +1,6 @@
 
 
-type Number = u32;
+type Number = u64;
 
 fn get_number() -> Number{
     use std::io::{stdin};
@@ -71,18 +71,6 @@ fn main() {
         .expect("Time went backwards").as_millis();
         println!("{:?}", since_the_epoch);
         println!("Amount Names: {}",x);
-        //println!("Amount Elements {}", x.len());
-        /*for v in x.iter(){
-            //let s = v.iter().fold("[".to_string(), |acc2, &n| acc2 + &n.to_string());
-            //print!("{}",s);
-            print!("[");
-            for n in v.iter(){
-                print!("{},", n);
-            }
-            print!("]  ")
-        }
-        println!("");**/
-        //let endresult = x.iter().fold("[".to_string(),|acc, &v| acc +  ));
     }
 }
 
